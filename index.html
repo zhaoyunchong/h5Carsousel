@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="swiper.min.css">
+	<style>
+		*{
+		    touch-action: none;
+		}
+		body{
+			margin:0;
+			padding: 0;
+		}
+
+		.swiper-container {
+		    height: 70vh;
+		} 
+		#vid1,#vid2{
+			width: 100vw!important;
+		    height: 80%!important;
+
+		}
+		.zhezhao{
+			position: absolute;
+			height: 60vh;
+			background-color: rgba(255,255,255,0);
+			width:100%;
+			left: 0;
+			top: 70px;
+			z-index: 100;
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper-container">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide">
+	        	<div style="font-size: 40px;text-align: center;margin-bottom: 20px;">我的第一条抖音视频</div>
+	        	<div id="vid1"></div>
+	        </div>
+	        <div class="swiper-slide">
+	        	<div style="font-size: 40px;text-align: center;margin-bottom: 20px;">我的第二条抖音视频</div>
+	        	<div id="vid2"></div>
+	        </div>
+	    </div>
+	    <div class="zhezhao"></div>
+	</div>
+
+
+	<script src="swiper.min.js"></script>
+	<script src="xgplayer.js"></script>
+	<script src="jquery.min.js"></script>
+	<script>       
+	alert(1); 
+	  var mySwiper = new Swiper ('.swiper-container', {
+	    direction: 'horizontal',
+	  })  
+	  var arr=[];
+	   let player_1 = new Player({
+		  id: 'vid1',
+		  url: 'c.mp4',
+		  autoplay:true
+		}); 
+	   arr.push(player_1);
+	    let player_2 = new Player({
+		  id: 'vid2',
+		  url: 'd.mp4',
+		  autoplay:true
+		}); 
+		$('.zhezhao').on('click',function(){
+			var index=$('.swiper-slide').index($('.swiper-slide-active'));
+			if(index==0){
+				if(player_1.paused){
+					player_1.play();
+				}else{
+					player_1.pause();
+				}
+			}else{
+				if(player_2.paused){
+					player_2.play();
+				}else{
+					player_2.pause();
+				}
+			}
+		})     
+  </script>
+</body>
+</html>
